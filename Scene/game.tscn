@@ -1,3 +1,9 @@
 [gd_scene format=3 uid="uid://ca3uqnx26cw82"]
 
+[ext_resource type="PackedScene" uid="uid://lemnhqpulhbd" path="res://Scene/bird.tscn" id="1_mhtsl"]
+
 [node name="Game" type="Node2D" unique_id=237315969]
+
+[node name="Bird" parent="." unique_id=1299686997 instance=ExtResource("1_mhtsl")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=350808360]
