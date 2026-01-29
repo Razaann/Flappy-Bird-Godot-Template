@@ -1,16 +1,73 @@
 [gd_scene format=3 uid="uid://ca3uqnx26cw82"]
 
+[ext_resource type="Script" uid="uid://bsshmla5j5v3r" path="res://Script/game.gd" id="1_03iqk"]
 [ext_resource type="PackedScene" uid="uid://lemnhqpulhbd" path="res://Scene/bird.tscn" id="1_mhtsl"]
+[ext_resource type="PackedScene" uid="uid://b6dth34v2rvkj" path="res://Scene/pipe_pair.tscn" id="2_ihreq"]
 [ext_resource type="Texture2D" uid="uid://bjn7t13cjh5xl" path="res://Assets/Flappy Bird/Game Objects/background-day.png" id="2_w51g1"]
+[ext_resource type="Texture2D" uid="uid://bkskmt0x8umc4" path="res://Assets/Flappy Bird/Game Objects/base.png" id="3_4jv7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jv7b"]
+size = Vector2(672, 216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03iqk"]
+size = Vector2(480, 8)
 
 [node name="Game" type="Node2D" unique_id=237315969]
+script = ExtResource("1_03iqk")
+pipe_scene = ExtResource("2_ihreq")
 
 [node name="Bird" parent="." unique_id=1299686997 instance=ExtResource("1_mhtsl")]
 top_level = true
+position = Vector2(248, 328)
 scale = Vector2(2, 2)
 
 [node name="BackgroundDay" type="Sprite2D" parent="." unique_id=1590988576]
+position = Vector2(240, 432)
 scale = Vector2(2, 2)
 texture = ExtResource("2_w51g1")
+metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=350808360]
+[node name="Base" type="AnimatableBody2D" parent="." unique_id=1794748070]
+top_level = true
+position = Vector2(336, 800)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Base" unique_id=2121744367]
+scale = Vector2(2, 2)
+texture = ExtResource("3_4jv7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base" unique_id=1410850463]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_4jv7b")
+
+[node name="Base2" type="AnimatableBody2D" parent="." unique_id=1474771406]
+top_level = true
+position = Vector2(1008, 800)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Base2" unique_id=1430499528]
+scale = Vector2(2, 2)
+texture = ExtResource("3_4jv7b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base2" unique_id=1241370224]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_4jv7b")
+
+[node name="Border" type="StaticBody2D" parent="." unique_id=2075197209]
+position = Vector2(240, 432)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Bottom" type="CollisionShape2D" parent="Border" unique_id=1193297089]
+position = Vector2(0, 260)
+shape = SubResource("RectangleShape2D_03iqk")
+
+[node name="Top" type="CollisionShape2D" parent="Border" unique_id=1281133645]
+position = Vector2(0, -424)
+shape = SubResource("RectangleShape2D_03iqk")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=687416957]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b5st3ic7wvbms"]
+
+[ext_resource type="Texture2D" uid="uid://pigkeo32kxai" path="res://Assets/Flappy Bird/Game Objects/pipe-green.png" id="1_s7mr4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7mr4"]
+size = Vector2(48, 320)
+
+[node name="Pipe" type="StaticBody2D" unique_id=23461635]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1052988894]
+texture = ExtResource("1_s7mr4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1783417]
+shape = SubResource("RectangleShape2D_s7mr4")

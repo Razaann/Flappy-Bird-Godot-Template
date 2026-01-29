@@ -25,6 +25,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="LatihanFlappy"
 
+[global_group]
+
+Player=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

@@ -11,6 +11,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
+	gameOver()
+	
 	# Accepting input, and tell the difference between action
 	if Input.is_action_just_pressed("ui_accept"):
 		jump_sfx.play()
@@ -18,6 +20,12 @@ func _physics_process(delta: float) -> void:
 	
 	rotation_degrees = velocity.y * 0.1
 	rotation_degrees = clamp(rotation_degrees, -45, 90)
+
+func gameOver():
+	if is_on_floor() or is_on_ceiling() or is_on_wall():
+		print("died")
+		get_tree().reload_current_scene()
+		return
 
 # Necesearry for movement i think
 	move_and_slide()

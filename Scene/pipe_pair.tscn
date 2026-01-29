@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b6dth34v2rvkj"]
+
+[ext_resource type="Script" uid="uid://dpi2527ahyxlx" path="res://Script/pipe_pair.gd" id="1_7piyd"]
+[ext_resource type="PackedScene" uid="uid://b5st3ic7wvbms" path="res://Scene/pipe.tscn" id="1_odnt8"]
+
+[node name="PipePair" type="Node2D" unique_id=881725853]
+scale = Vector2(2, 2)
+script = ExtResource("1_7piyd")
+
+[node name="Pipe" parent="." unique_id=23461635 instance=ExtResource("1_odnt8")]
+position = Vector2(0, 224)
+
+[node name="Pipe2" parent="." unique_id=168297110 instance=ExtResource("1_odnt8")]
+position = Vector2(0, -224)
+rotation = 3.1415927
